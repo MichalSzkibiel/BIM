@@ -1,0 +1,36 @@
+Projekt BIM
+
+Struktura programu:
+
+	IFCAttribute - nazwa, typ
+	IFCClass - rodzice, IFCAttributes, odznaczony = false (nazwa)
+	IFCModel - słownik nazwa:IFCClass
+
+
+1. Sczytanie modelu IFC ze strony internetowej do obiektu IFCModel
+	a) Załadowanie listy obiektów
+	b) Iteracja po elementach tej listy:
+		i) Załadowanie strony danej klasy
+		ii) Sparsowanie opisu klasy
+	c) Zapis modelu do naszego przyjaznego formatu
+
+2. Utworzenie bazy danych w PostGISie
+	a)Iteracja po klasach w IFCModel
+		i) Sprawdzamy, czy klasa jest odznaczona
+			NIE JEST
+			I) Sprawdzamy, czy rodzic jest odznaczony
+				NIE JEST
+				1. Ustawiamy obecną klasę na rodzica
+				2. Robimy procedurę pod 2.a.i
+				3. Wracamy do obecnej klasy
+			II Wstawiamy tabelę dla danej klasy
+			III Odznaczamy klasę
+	b) Ustawienie kluczy obcych
+
+3. Zapis danych BIM
+	a) Wczytanie danych IFC
+	b) Iteracja po obiektach w danych IFC:
+		i) Odnalezienie klasy obiektu
+		ii) Przypisanie atrybutów wedle klasy
+		iii) Procedura 3.b wobec obiektów zależnych i niezależnych powiązanych.
+		iv) Przeliczenie geometrii do układu globalnego
