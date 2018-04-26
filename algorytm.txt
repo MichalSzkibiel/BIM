@@ -1,4 +1,4 @@
-Projekt BIM
+﻿Projekt BIM
 
 Struktura programu:
 
@@ -15,7 +15,8 @@ Struktura programu:
 	c) Zapis modelu do naszego przyjaznego formatu
 
 2. Utworzenie bazy danych w PostGISie
-	a)Iteracja po klasach w IFCModel
+	a)Utworzenie list w bazie danych
+	b)Iteracja po klasach w IFCModel
 		i) Sprawdzamy, czy klasa jest odznaczona
 			NIE JEST
 			I) Sprawdzamy, czy rodzic jest odznaczony
@@ -25,7 +26,7 @@ Struktura programu:
 				3. Wracamy do obecnej klasy
 			II Wstawiamy tabelę dla danej klasy
 			III Odznaczamy klasę
-	b) Ustawienie kluczy obcych
+	c) Ustawienie kluczy obcych
 
 3. Zapis danych BIM
 	a) Wczytanie danych IFC
