@@ -1,0 +1,14 @@
+nazwa			przyk³ad							Postgres
+REAL			IfcAbsorbedDoseMeasure				REAL
+BINARY			IfcBinary							BYTEA
+BOOLEAN			IfcBoolean							BOOLEAN
+INTEGER			IfcCardinalPointReference			INTEGER
+NUMBER			IfcCountMeasure						INTEGER
+STRING			IfcDate								TEXT
+LOGICAL			IfcLogical							BOOLEAN
+ARRAY			IfcComplexNumber					coœ[]
+<A (inny typ)	IfcBoxAlignment						typ innego typu
+SET				IfcPropertySetDefinitionSet			jako zestaw
+ENUMERATION		IfcActionRequestEnum				tabela
+SELECT			IfcActorSelect						klucz obcy
+LIST			IfcArcIndex							jako zestaw w przypadku listy obiektów, lub coœ[] w przypadku listy typów
