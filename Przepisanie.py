@@ -1,6 +1,6 @@
 import psycopg2
 from subprocess import call
-
+from insert_entity import insert_entity
 
 ifc_name1={"nazwa_typu" : "INTEGER", "nazwa_entity":{"parent":"nazwa_parent", "attribute_list":{"name":"nazwa_typu", "ifc_class":"nazwa_entity"}, "is_in_table":False}, "nazwa_enum" : ["string1","string2"]}
 for element in ifc_name1:
@@ -16,7 +16,6 @@ for element in ifc_name1:
         cur.close()
         conn.close()    
     else:
-       if not (ifc_name1[ifc_name1[element]["parent"]]["is_in_table"]):#I) Sprawdzamy, czy rodzic jest odznaczony
-           insert_entity(ifc_name1,element)
-           #ciag dalszy w funkcji insert_entity
-        
+        insert_entity(ifc_name1,element)
+                #ciag dalszy w funkcji insert_entity
+             
