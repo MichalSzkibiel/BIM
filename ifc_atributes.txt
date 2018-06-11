@@ -1,0 +1,2 @@
+IFCRELAGGREGATES: GlobalId, OwnerHistory, Name, Description, RelatingObject, RelatedObjects
+IFCCARTESIANPOINT: Coordinates
