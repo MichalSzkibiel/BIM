@@ -215,7 +215,7 @@ class ifc_counter:
 
     def json_getter(self):
          json = []
-         for i in self.lines:
+         for i in self.lines[:200]:
             #Pominiecie linijek bez "#" na poczatku
             if i[0] != "#":
                 continue
