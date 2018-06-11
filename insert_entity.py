@@ -16,16 +16,23 @@ def insert_entity(ifc_name,element):
                 cur.execute("CREATE TABLE IF NOT EXISTS " + element + "() WITH (OIDS=TRUE)", [element])
     for i in ifc_name[element]["attributes"]:# i to klucz a pod wartoscia jest tryb
 		#2. Robimy procedure pod 2.a.i: Zaladowanie strony klasy
-        ifc_name1= ifc_name[ifc_name[element]["attributes"][i]]
+        ifc_name1= ifc_name[element]["attributes"][i]
+        if not "SET" in ifc_name1:
+            ifc_name1 = ifc_name[ifc_name1]  
+        elif not "SET_SET" in ifc_name1:
+            ifc_name1 = ifc_name[ifc_name1.replace("SET_", "")]
+            if type(ifc_name1) != type(""):
+                ifc_name1='TEXT[]'
+            else:
+                ifc_name1 = ifc_name1 + "[]"
+        else:
+            ifc_name1 = "TEXT"
         if type(ifc_name1) != type(""):
             ifc_name1='TEXT'
-            cur.execute("ALTER TABLE " + element + " ADD " + i + " text", [element, i])
-        else:
-            cur.execute("ALTER TABLE " + element + " ADD " + i + " " + ifc_name1, [element, i, ifc_name1]) 
+        cur.execute("ALTER TABLE " + element + " ADD " + i + " " + ifc_name1)
+        
     conn.commit()
     cur.close()
     conn.close()
-    conn1 = psycopg2.connect("dbname=postgres user=postgres password=Qjr567*_+")
-    cur1 = conn1.cursor()
     ifc_name[element]["is_in_table"]=True#III Odznaczamy klasê		
 	#c) Ustawienie kluczy obcych
