@@ -72,7 +72,7 @@ def sqlize(object):
                   float(object[key])
                   sql[-1] = sql[-1] + ", " + str(object[key])
               except:
-                  sql[-1] = sql[-1] + ", \'" + object[key] + "\'"
+                  sql[-1] = sql[-1] + ", \'" + object[key].replace(".", "") + "\'"
     sql[-1] = sql[-1] + ")"
     return sql
 
@@ -86,5 +86,6 @@ cur = conn.cursor()
 for el in json:
     sql = sqlize(el)
     for i in range(len(sql)):
-        cur.execute(sql)
+        cur.execute(sql[i])
+        #print (sql[i])
 conn.close()
